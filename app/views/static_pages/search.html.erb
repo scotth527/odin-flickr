@@ -1,0 +1,17 @@
+<h1>Welcome snuggle up snuggle buggggg!</h1>
+
+<div class="mx-auto col-5 d-flex">
+    <h4 class="mr-3">Flickr Search</h4>
+    <%= form_with(url: search_path, method: :get, local: true) do |form| %>
+       <div class="d-flex ml-3">
+           <%= form.text_field :user_id, class: 'form form-control mr-3', placeholder: 'Search by Flickr User ID' %>
+           <%= form.submit :Search, id: 'btn btn-primary ml-3' %>
+       </div>
+     <% end %>
+</div>
+
+<% if @photos.present? %>
+    <div class="row">
+        <%= render :partial => "photo", :collection => @photos %>
+    </div>
+<% end %>
