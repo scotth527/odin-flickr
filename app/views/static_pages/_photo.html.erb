@@ -1,7 +1,9 @@
 
-<div class="col-4 p-2">
-    <% p "HERE IS THE PHOTO INFO" %>
-    <% p photo %>
+<div class="col-4 p-0 pe-3 mb-3">
     <h4><%= photo.title %></h4>
-    <%= image_tag Flickr.url(photo), loading: 'lazy' %>
+    <div class="image-container">
+        <a href=<%=Flickr.url(photo) %> target="_blank">
+            <%= image_tag Flickr.url(photo), loading: 'lazy' %>
+        </a>
+    </div>
 </div>

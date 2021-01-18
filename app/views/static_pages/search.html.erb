@@ -1,17 +1,24 @@
-<h1>Welcome snuggle up snuggle buggggg!</h1>
 
-<div class="mx-auto col-5 d-flex">
-    <h4 class="mr-3">Flickr Search</h4>
-    <%= form_with(url: search_path, method: :get, local: true) do |form| %>
-       <div class="d-flex ml-3">
-           <%= form.text_field :user_id, class: 'form form-control mr-3', placeholder: 'Search by Flickr User ID' %>
-           <%= form.submit :Search, id: 'btn btn-primary ml-3' %>
-       </div>
-     <% end %>
+
+<div class="mx-auto col-3 mt-3">
+    <%= form_with(url: search_path, method: :get, local: true, class: "d-flex") do |form| %>
+       <%= form.text_field :user_id, class: 'form-control me-1', placeholder: 'Search by Flickr User ID' %>
+       <%= form.submit :Search, class: 'btn btn-primary' %>
+    <% end %>
 </div>
 
-<% if @photos.present? %>
-    <div class="row">
+<div class="row mt-3">
+    <h1 class="p-0">
+        <% if @random_photos %>
+            Daily Photos
+        <% elsif @search_success != false %>
+            User: <%= params[:user_id]%>
+        <% end %>
+    </h1>
+
+    <% if @photos.present? %>
         <%= render :partial => "photo", :collection => @photos %>
-    </div>
-<% end %>
+    <% elsif @search_success != false %>
+        <h4 class="p-0">Search by user</h4>
+    <% end %>
+</div>

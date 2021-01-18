@@ -10,7 +10,27 @@
   </head>
 
   <body>
-    <div class="container">
+    <nav class="navbar navbar-dark bg-dark justify-content-between ps-4">
+         <%= link_to "Odin Flickr Project", root_path , {class:"navbar-brand"} %>
+
+         <div class="d-flex ">
+             <%#= link_to 'Search Flights', flights_path, class:"btn btn-outline-success my-2 my-sm-0 mr-2" %>
+         </div>
+    </nav>
+
+    <% if notice %>
+        <div class="alert alert-success" role="alert">
+            <%= notice %>
+        </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+        <div class="alert alert-danger" role="alert">
+            <%= flash[:alert] %>
+        </div>
+    <% end %>
+    
+    <div class="container p-3">
         <%= yield %>
     </div>
   </body>
